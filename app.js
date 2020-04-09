@@ -9,6 +9,20 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+var config = {
+  client: "pg",
+  connection: {
+    host: "127.0.0.1",
+    user: "maitruck",
+    password:"secret",
+    database: "mailtruck",
+    ssl: "true",
+    charset: "utf8"
+  }
+};
+var knex = require("knex")(config);
+var bookshelf = require("bookshelf")(knex);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

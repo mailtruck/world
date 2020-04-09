@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome back
+
+  form(action='/user' method='post' class="register")
+    label
+      span username
+      input(type='text' name='username' autofocus)
+    label
+      span email
+      input(type='text' name='email' autofocus)
+    label 
+      span password
+      input(type='password' name='password')
+    label 
+      span confirm password
+      input(type='password' name='password2')
+
+    input(type='submit' value='login')
+  

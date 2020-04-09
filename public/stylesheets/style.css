@@ -16,6 +16,10 @@ ul li {
   display: flex;
 }
 
+ul li a {
+  padding: .3em;
+}
+
 label {
   font-size: 1.3em;
   display: flex;
@@ -26,13 +30,13 @@ label span {
   margin-left: 1.3em;
 }
 
-form.login {
+form.login, form.register{
   padding: 1em;
   background: #efefef;
   border: solid 1px #ccc;
   max-width: 450px;
 }
-.login input {
+.login input, .register input {
   font-size: 1.3em;
   margin: 1em;
 }

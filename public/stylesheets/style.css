@@ -17,6 +17,30 @@ ul li {
 }
 
 label {
+  font-size: 1.3em;
   display: flex;
   flex-direction: column;
 }
+
+label span {
+  margin-left: 1.3em;
+}
+
+form.login {
+  padding: 1em;
+  background: #efefef;
+  border: solid 1px #ccc;
+  max-width: 450px;
+}
+.login input {
+  font-size: 1.3em;
+  margin: 1em;
+}
+input[type=submit] {
+  border: solid 1px #fff;
+  background: #00B7FF;
+  color: #efefef;
+  padding: 1em;
+  text-shadow: 1px 0px 0 #7A7A7A;
+} 
+

@@ -4,6 +4,12 @@ block content
   h1= title
   p Welcome back
 
-  label username
-    input(type='text' name='username' autofocus)
+  form(action='/users' method='post' class="login")
+    label
+      span username
+      input(type='text' name='username' autofocus)
+    label 
+      span password
+      input(type='password' name='password')
+      input(type='submit' value='login')
   

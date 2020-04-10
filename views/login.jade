@@ -3,8 +3,15 @@ extends layout
 block content
   h1= title
   p Welcome back
+ 
+  if flash
+    p(class='flash')= flash
 
-  form(action='/users/new' method='post' class="login")
+  if errors
+    each error in errors
+      p(class='validation-error')= error
+
+  form(action='/users/' method='post' class="login")
     label
       span username
       input(type='text' name='username' autofocus)

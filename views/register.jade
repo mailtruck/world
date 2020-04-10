@@ -4,19 +4,27 @@ block content
   h1= title
   p Welcome back
 
-  form(action='/user' method='post' class="register")
+  if errors
+    each error in errors
+      p(class='validation-error')= error
+
+  form(action='/users/new' method='post' class="register")
+    label
+      span name
+      input(type='text' name='name' value=''+body.name autofocus)
+        
     label
       span username
-      input(type='text' name='username' autofocus)
+      input(type='text' name='username' value=''+body.username)
     label
       span email
-      input(type='text' name='email' autofocus)
+      input(type='email' name='email' value=''+body.email)
     label 
       span password
-      input(type='password' name='password')
+      input(type='password' name='password' value=''+body.password)
     label 
       span confirm password
-      input(type='password' name='password2')
+      input(type='password' name='password2' value=''+body.password2)
 
-    input(type='submit' value='login')
+    input(type='submit' value='register')
   

@@ -7,6 +7,14 @@ const Note = bookshelf.model('Note', {
   tableName: 'notes'
 })
 
+router.get('/error', function(req, res, next) {
+    return res.render('error2', { title: 'Error 500'});
+});
+
+router.get('/unauthorized', function(req, res, next) {
+    return res.render('unauthorized', { title: 'Unauthorized'});
+});
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   console.log(req.session.user)
@@ -27,14 +35,30 @@ router.get('/', function(req, res, next) {
     console.log(err)
   })
 
-
 });
 
-router.get('/notes/:id?', function(req, res, next) {
-	console.log(req.params.id)
+router.get('/notes/:id', function(req, res, next) {
+  var { id } = req.params;
+  var uid = userIdFromSession(req);
+  if (uid === 0) {
+    res.redirect('/login')
+  }
+
+  Note.where({id: id}).fetch().then(result=>{
+    var { uid: nuid } = result.attributes
+    if (nuid !== uid) {
+      res.redirect('/unauthorized')
+    } 
+    return res.render('note', {uid: uid, note: result.attributes});
+
+  }).catch(err=>{
+    console.log(err)
+    res.redirect('/error')
+  })
+
 })
 
-router.get('/notes/new', function(req, res, next) {
+router.get('/notes/', function(req, res, next) {
   console.log(req.session.user)
   var uid = userIdFromSession(req);
   if (uid === 0) {
@@ -43,7 +67,7 @@ router.get('/notes/new', function(req, res, next) {
   res.render('notes-edit', { title: 'New Note', uid: uid, id: 0});
 });
 
-router.post('/notes/new', function(req, res, next) {
+router.post('/notes/', function(req, res, next) {
   var uid = userIdFromSession(req);
   if (uid === 0) {
     res.redirect('/login')
@@ -54,7 +78,7 @@ router.post('/notes/new', function(req, res, next) {
 	    console.log("note saved ")
 	    console.log(note)
 
-            res.json(req.body)
+            res.redirect('/notes/'+note.id)
     }).catch((err)=>{
 	    console.log("note save failure")
 	    console.log(err)

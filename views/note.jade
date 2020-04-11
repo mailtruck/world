@@ -1,0 +1,6 @@
+extends layout
+
+block content
+  h1= note.title
+  if note.note
+    div(class='note')= note.note

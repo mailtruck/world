@@ -3,7 +3,7 @@ extends layout
 block content
   h1= title
 
-  form(action='/notes/new/' method='post' class="note")
+  form(action='/notes/' method='post' class="note")
     input(placeholder='title' name='title' type=text)
     input(type='hidden' name='id' value=''+id)
     textarea(placeholder='note' name="note")

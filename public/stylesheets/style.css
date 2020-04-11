@@ -60,3 +60,7 @@ input[type=submit] {
 .note input, .note textarea {
   width: 100%;
 }
+
+div.note {
+  white-space: pre-wrap;
+}

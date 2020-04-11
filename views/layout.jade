@@ -4,12 +4,18 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-
     h2
-    a(href='/') Mailtruck World
-    ul
-      li
-        a(href='/login') login
-      li
-        a(href='/register') register
+      a(href='/') Mailtruck World
+    if uid
+      ul(class='menu')
+        li
+          a(href='/notes/new') new note
+        li
+          a(href='/logout') logout
+    unless uid
+      ul(class='menu')
+        li
+          a(href='/login') login
+        li
+          a(href='/register') register
     block content

@@ -3,3 +3,9 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+
+  if notes
+    ul
+      each note in notes
+        li
+          a(href='/notes/'+note.id)= note.title

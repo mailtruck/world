@@ -7,7 +7,7 @@ a {
   color: #00B7FF;
 }
 
-ul {
+ul.menu {
   list-style-type: none;
   display: flex;
   justify-content: flex-end;
@@ -48,3 +48,15 @@ input[type=submit] {
   text-shadow: 1px 0px 0 #7A7A7A;
 } 
 
+.note input {
+  font-size: 1.5em;
+  margin-bottom: .3em;
+}
+
+.note textarea {
+  min-height: 600px;
+}
+
+.note input, .note textarea {
+  width: 100%;
+}

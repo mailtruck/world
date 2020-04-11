@@ -19,7 +19,7 @@ app.use(session({
     cookie: { maxAge: 60000 },
     store: new FileStore(fileStoreOptions),
     saveUninitialized: true,
-    resave: 'true',
+    resave: 'false',
     secret: 'change me'
 }));
 app.use(flash());
